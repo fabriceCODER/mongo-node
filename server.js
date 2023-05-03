@@ -1,9 +1,13 @@
+require('./model/db')
+
 const express = require('express');
 const path = require('path');
 const handlebars = require('handlebars');
 const exphbs = require('express-handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access');
 const bodyparser = require('body-parser');
+
+const studentController = require('./controllers/studentController')
 
 
 const app = express();
@@ -32,3 +36,5 @@ app.engine('hbs', exphbs({
 app.listen(4444, ()=>{
      console.log('Server started on port 4444');
 });
+
+app.use('/student', studentController)
